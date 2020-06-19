@@ -2,7 +2,6 @@ package br.com.xamo.sample.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import br.com.xamo.sample.R
@@ -28,26 +27,30 @@ class SplashActivity : AppCompatActivity() {
 
     fun checarLogin() {
         GlobalScope.launch(Dispatchers.Main) {
-            LoginUtils.logout()
+            //LoginUtils.logout()
             delay(2000)
             if (LoginUtils.usuarioLogado()) {
-                val intent = Intent(this@SplashActivity, ApiActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                startActivity(intent)
-                ActivityCompat.finishAffinity(this@SplashActivity)
+                navelarTelaUsuarioLogado()
             } else {
                 LoginNavegacao.navegarTelaEscolhaAutenticacao(this@SplashActivity, LoginTipoApp.LOJA, CODE)
             }
         }
     }
 
+    fun navelarTelaUsuarioLogado() {
+        val intent = Intent(this@SplashActivity, ApiActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        ActivityCompat.finishAffinity(this@SplashActivity)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CODE) {
             if (resultCode == RESULT_OK && data != null) {
-                val model = LoginNavegacao.getResultLoginLoja(data)
-                Log.d("DEBUG", model.toString())
+                //val model : LojaDTO = LoginNavegacao.getResultLoginLoja(data)
+                navelarTelaUsuarioLogado()
             }
         }
     }
