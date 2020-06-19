@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/BotaoVerde"
+            android:id="@+id/btnDadosLoja"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="DADOS LOJA" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/BotaoVerde"
+            android:id="@+id/btnCadastroLoja"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="CADASTRO LOJA" />
+
+    </LinearLayout>
+
+</ScrollView>
